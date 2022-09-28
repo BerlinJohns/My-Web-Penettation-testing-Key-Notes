@@ -1,0 +1,4 @@
+
+  for  s3 dork:site:s3.amazonaws.com target.com
+
+  https://target.s3.amazonaws.com

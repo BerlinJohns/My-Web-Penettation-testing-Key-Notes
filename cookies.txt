@@ -1,0 +1,44 @@
+
+ reason for use cookies
+
+ -user mangement --->authontication and authorization
+ 
+ Type of  cookies:
+
+    Session  cookie:
+  
+             
+        if the browser is close or the tab is closed  the cookies are deleted
+  
+   Persistant cookie:
+    
+      -personlaization
+      -tracking
+      -not deleting suddenly
+ 
+        
+
+
+ How cookies are created --
+    
+            --->javascript
+            --->server or other backend languages
+
+ Attributes:
+
+  " JSESSIONID=3F613592C2920989A0E48DBC844E44B2"
+      name          value
+
+  1st party cookie: own domain cookie
+  3rd party cookie: other websit cookie (other website cookies ,visiable aagath) --majorly use for adverting
+  max-age--->set expire time
+  secure --->https la secure cookie set panna
+
+ cross site request:
+ 3values 
+         -strict--->only same site
+         -lax ---->2 conditions
+                   1.top level navigations (work in normal Get request, not work with PUT,POST,DELETE requests)
+                   
+         -none ---->iframe,img (only work with secure sites (https)) 
+          

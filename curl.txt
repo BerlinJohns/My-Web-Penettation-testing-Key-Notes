@@ -1,0 +1,4 @@
+-L = observe redirection
+-I = see server response header
+-V = view TLS hand shake
+

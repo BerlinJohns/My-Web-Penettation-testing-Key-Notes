@@ -1,0 +1,8 @@
+  
+ it grab banner(server information) from any kind of online sevices
+
+ hostname:target.com
+ org:india city:delhi
+ os:linux org:amazon port:445
+ ssl:"Target industry"200
+ Ssl.cert.subject.CN:"target.com"200 http.title Connet Central Login 

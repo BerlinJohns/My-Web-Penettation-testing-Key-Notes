@@ -1,0 +1,80 @@
+
+Know your target services and softwares
+Analyze and examine the code
+Should know how to exploit the Specific code
+Should know how to use Dorks
+Map your findings (OSINT skills)
+Don't Report all the information you find
+
+                                                                                 
+
+                                                                        What Thing you Need Recon
+
+Github dorks
+Organization
+Employees Profile
+
+
+
+                        What you can find during Recom
+
+Source code leakage
+Password
+Tokens
+API keys
+Usernames
+Sensitive files
+Internal IP's
+AWS secret
+SSH FTP passwords
+
+            Github Dorks
+
+  Common ways to Github Recon
+
+  for Finding Files              ----> filename:vim_sittings.xml
+  for Finding Languages          ----> "language:PHP"
+  for Finding Api keys           ----> api_token:
+  for Finding Usernames          ----> user:name
+  for Using Dates                ----> created:2021-01-02 location:india
+  Extension                      ----> sql-mysql dump
+
+  Basic Dorks
+
+ "Company"password
+ "Company"secret
+ "Company"credentials
+ "Company"token
+ "Company"config
+ "Company"key
+ "Company"pass
+ "Compnay"login
+ "Company"ftp
+ "Company"pwd
+ "Company" stage
+ "Company" staging servers,firebase,password,testuser,testing
+
+ Password dorks
+ "Target.com" pwd
+ "Target.com" passwd
+ "Target.com" password
+ "Target.com" dbpassword
+ "Target.com" access_key
+ "Target.com" secret_access_key
+ "Target.com" bucket_password
+ "Target.com" redis_password
+ "Target.com" root_password
+
+
+ AWS CREDS
+ 
+ org:Target "bucket_name"
+ org:Target "aws_access_key"
+ org:Target "aws_secret_key"
+ org:Target "s3_BUCKET"
+ org:Target "s3_ACCESS_KEY_ID"
+ org:Target "S3_SECRET_ACCESS_KEY"
+ org:Target "S3_ENDPOINT"
+ org:Target "AWS_ACCESS_KEY_ID"
+ org:Target "lis_aws_accounts"
+

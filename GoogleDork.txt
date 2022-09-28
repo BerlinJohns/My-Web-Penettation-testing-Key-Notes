@@ -1,0 +1,119 @@
+
+site:Narrows results to a site or a specific TLD
+     Example:site:example.com
+
+intitle:Restricts results to titles of webpages
+     Example:intitle:"emplooyes"
+
+inurl:Restricts results to the URL of a websites
+     Example:  inurl:"logs"
+
+filetype:searches for specific filetype pased on the extensions
+     Example:  filetype:pdf
+
+link: Searches for pages linking to specified URL
+     Example: link:www.target.com
+
+cache : Seaches for a cached copy of a webpage when it was  indexed by Google.
+     Example:cache:www.target.com
+for s3:site:s3.amazonaws.com target.com
+
+for exclude: -www
+
+  common use case:https://target.com:port/inurl/filetype
+
+googledb
+https://archive.org/ ---> see history of web site
+
+ intitle:"index of" inurl:ftp
+ intitle:index.of.etc.passwd
+ intitle:"index.of" filetype:php
+ login:*password=*filetype:xis
+ allinurl:
+ ntext:
+ allintext:
+ related:
+ cache:
+ info:
+ allinurl:
+  meta:
+ inanchor:
+ location:
+ contains:
+ altloc:
+ feed:
+ hasfeed:  -->finds pages that contain both term and terms
+ language:
+ linkfromdomain:
+ inurl:adminpanel site:gov.* 
+example.com/wp-inc/
+example.com/wp-inc/
+
+  Seach for bounty programs
+
+ inurl /bug bounty
+inurl : / security
+inurl:security.txt
+inurl:security "reward"
+inurl : /responsible disclosure
+inurl : /responsible-disclosure/ reward
+inurl : / responsible-disclosure/ swag
+inurl : / responsible-disclosure/ bounty
+inurl:'/responsible disclosure' hoodie
+responsible disclosure swag r=h:com
+responsible disclosure hall of fame
+responsible disclosure europe
+responsible disclosure white hat
+white hat program
+insite:"responsible disclosure" -inurl:nl
+intext responsible disclosure
+site eu responsible disclosure
+site .nl responsible disclosure
+site responsible disclosure
+responsible disclosure:sites
+responsible disclosure r=h:nl
+responsible disclosure r=h:uk
+responsible disclosure r=h:eu
+responsible disclosure bounty r=h:nl
+responsible disclosure bounty r=h:uk
+responsible disclosure bounty r=h:eu
+responsible disclosure swag r=h:nl
+responsible disclosure swag r=h:uk
+responsible disclosure swag r=h:eu
+responsible disclosure reward r=h:nl
+responsible disclosure reward r=h:uk
+responsible disclosure reward r=h:eu
+"powered by bugcrowd" -site:bugcrowd.com
+"powered by hackerone" "submit vulnerability report"
+"submit vulnerability report"
+site:responsibledisclosure.com
+inurl:'vulnerability-disclosure-policy' reward
+intext:Vulnerability Disclosure site:nl
+intext:Vulnerability Disclosure site:eu
+site:*.*.nl intext:security report reward
+site:*.*.nl intext:responsible disclosure reward
+"security vulnerability" "report"
+inurl"security report"
+"responsible disclosure" university
+inurl:/responsible-disclosure/ university
+buy bitcoins "bug bounty"
+inurl:/security ext:txt "contact"
+"powered by synack"
+intext:responsible disclosure bounty
+inurl: private bugbountyprogram
+inurl:/.well-known/security ext:txt
+inurl:/.well-known/security ext:txt intext:hackerone
+inurl:/.well-known/security ext:txt -hackerone -bugcrowd -synack -openbugbounty
+inurl:reporting-security-issues
+inurl:security-policy.txt ext:txt
+site:*.*.* inurl:bug inurl:bounty
+site:help.*.* inurl:bounty
+site:support.*.* intext:security report reward
+intext:security report monetary inurl:security 
+intext:security report reward inurl:report
+site:security.*.* inurl: bounty
+site:*.*.de inurl:bug inurl:bounty
+site:*.*.uk intext:security report reward
+site:*.*.cn intext:security report reward
+
+https://www.giantswarm.io/responsible-disclosure

@@ -1,0 +1,2 @@
+
+intercept it with burp -->change 302 or 403 -->change it to 200 ok

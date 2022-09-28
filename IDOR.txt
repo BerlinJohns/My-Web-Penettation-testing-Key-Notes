@@ -1,0 +1,29 @@
+Always check get post parameters 
+
+IF IDOR is here always privillage escalations here
+   number 
+   character
+   user name
+ 
+ 1.Find endpoints with IDs in the request
+ 2.Chnage the ID (to another account you own-don't test on accouts you don't own)
+ 3.If it works it's an IDOR
+
+ ___
+ 
+ 1.Find endpoints that require admin permissions
+ 2.Login to an account that has guest permissions
+ 3.Repeat the requests to the admin endpoints,changing the cookies
+ 4.if it works it's an IDOR
+ 
+  check the api version and try to change it
+  check every api endpoint curd options
+  look out for weridness
+
+
+ Privillage escaltion:
+  
+  Horizontl: user to user
+  Vertical : user to admin
+
+  
